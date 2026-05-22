@@ -1,0 +1,152 @@
+<section class="metrics">
+  <article class="metric">
+    <span>Total Events</span>
+    <strong>{{ total_events }}</strong>
+  </article>
+  <article class="metric">
+    <span>Honeytokens</span>
+    <strong>{{ total_tokens }}</strong>
+  </article>
+  <article class="metric">
+    <span>Alerts</span>
+    <strong>{{ total_alerts }}</strong>
+  </article>
+  <article class="metric">
+    <span>Tracked Sources</span>
+    <strong>{{ threat_scores|length }}</strong>
+  </article>
+</section>
+
+<section class="grid">
+  <article class="panel">
+    <div class="panel-heading">
+      <h2>Threat Levels</h2>
+      <span>Weighted score by source IP</span>
+    </div>
+    <div class="stack">
+      {% for score in threat_scores %}
+      <div class="row">
+        <span>{{ score.source_ip }}</span>
+        <span class="badge {{ score.level|lower }}">{{ score.level }} · {{ score.score }}</span>
+      </div>
+      {% else %}
+      <p class="empty">No threat scores yet.</p>
+      {% endfor %}
+    </div>
+  </article>
+
+  <article class="panel">
+    <div class="panel-heading">
+      <h2>Top Attacking IPs</h2>
+      <span>Grouped access events</span>
+    </div>
+    <div class="stack">
+      {% for ip, count in top_ips %}
+      <div class="row"><span>{{ ip }}</span><strong>{{ count }}</strong></div>
+      {% else %}
+      <p class="empty">No captured sources yet.</p>
+      {% endfor %}
+    </div>
+  </article>
+
+  <article class="panel">
+    <div class="panel-heading">
+      <h2>Top User-Agents</h2>
+      <span>Scanner and client signatures</span>
+    </div>
+    <div class="stack">
+      {% for agent, count in top_agents %}
+      <div class="row clipped"><span>{{ agent }}</span><strong>{{ count }}</strong></div>
+      {% else %}
+      <p class="empty">No user-agents recorded.</p>
+      {% endfor %}
+    </div>
+  </article>
+
+  <article class="panel">
+    <div class="panel-heading">
+      <h2>Event Timeline</h2>
+      <span>Events grouped by minute</span>
+    </div>
+    <div class="timeline">
+      {% for minute, count in timeline %}
+      <div class="bar" style="height: {{ 12 + count * 8 }}px" title="{{ minute }} · {{ count }}"></div>
+      {% else %}
+      <p class="empty">Timeline will populate after traffic arrives.</p>
+      {% endfor %}
+    </div>
+  </article>
+</section>
+
+<section class="grid wide">
+  <article class="panel">
+    <div class="panel-heading">
+      <h2>Recent Alerts</h2>
+      <span>Console alerts are mirrored to JSON reports</span>
+    </div>
+    <div class="stack">
+      {% for alert in recent_alerts %}
+      <div class="alert-line">
+        <span class="badge {{ alert.level|lower }}">{{ alert.level }}</span>
+        <span>{{ alert.title }}</span>
+        <strong>{{ alert.score }}</strong>
+      </div>
+      {% else %}
+      <p class="empty">No alerts generated.</p>
+      {% endfor %}
+    </div>
+  </article>
+
+  <article class="panel">
+    <div class="panel-heading">
+      <h2>Honeytoken Status</h2>
+      <span>Generated decoys and trigger state</span>
+    </div>
+    <div class="stack">
+      {% for token in tokens %}
+      <div class="token-line">
+        <span class="badge neutral">{{ token.token_type }}</span>
+        <span>{{ token.location }}</span>
+        <strong>{{ token.status }}</strong>
+      </div>
+      {% else %}
+      <p class="empty">Generate a honeytoken to begin.</p>
+      {% endfor %}
+    </div>
+  </article>
+</section>
+
+<section class="panel">
+  <div class="panel-heading">
+    <h2>Recent Events</h2>
+    <span>Captured request metadata</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>IP</th>
+          <th>Method</th>
+          <th>Path</th>
+          <th>UA</th>
+          <th>Code</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for event in recent_events %}
+        <tr>
+          <td>{{ event.timestamp.strftime("%H:%M:%S") }}</td>
+          <td>{{ event.source_ip }}</td>
+          <td>{{ event.request_method }}</td>
+          <td>{{ event.path }}</td>
+          <td>{{ event.user_agent }}</td>
+          <td>{{ event.response_code }}</td>
+        </tr>
+      {% else %}
+        <tr><td colspan="6" class="empty">No events captured.</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>

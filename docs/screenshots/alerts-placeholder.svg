@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">GhostTrace alerts screenshot placeholder</title>
+  <desc id="desc">Placeholder image for GhostTrace alert output.</desc>
+  <rect width="1200" height="675" fill="#101318"/>
+  <rect x="72" y="64" width="1056" height="548" rx="8" fill="#181d24" stroke="#303845"/>
+  <text x="116" y="124" fill="#f3f6f8" font-family="Arial, sans-serif" font-size="32" font-weight="700">Recent Alerts</text>
+  <g font-family="Arial, sans-serif" font-size="20">
+    <rect x="116" y="172" width="968" height="74" rx="6" fill="#202630"/>
+    <text x="146" y="218" fill="#ff6b6b" font-weight="700">CRITICAL</text>
+    <text x="282" y="218" fill="#f3f6f8">Scanner activity from 203.0.113.77</text>
+    <text x="1014" y="218" fill="#f6c768" text-anchor="end">100</text>
+    <rect x="116" y="272" width="968" height="74" rx="6" fill="#202630"/>
+    <text x="146" y="318" fill="#ff9f7a" font-weight="700">HIGH</text>
+    <text x="282" y="318" fill="#f3f6f8">Repeated auth probing from 192.0.2.44</text>
+    <text x="1014" y="318" fill="#f6c768" text-anchor="end">75</text>
+    <rect x="116" y="372" width="968" height="74" rx="6" fill="#202630"/>
+    <text x="146" y="418" fill="#f6c768" font-weight="700">MEDIUM</text>
+    <text x="282" y="418" fill="#f3f6f8">Honeytoken touched by unknown client</text>
+    <text x="1014" y="418" fill="#f6c768" text-anchor="end">45</text>
+  </g>
+</svg>

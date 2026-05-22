@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GhostTrace</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="/static/htmx.min.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">HoneyToken Manager & IDS Analytics</p>
+        <h1>GhostTrace</h1>
+      </div>
+      <nav class="actions">
+        <button hx-post="/tokens/url" hx-target="#action-output">Generate URL</button>
+        <button hx-post="/tokens/api" hx-target="#action-output">Generate API Token</button>
+        <button hx-post="/tokens/config" hx-target="#action-output">Generate Config</button>
+        <button hx-post="/analyze" hx-target="#action-output">Analyze Now</button>
+      </nav>
+    </header>
+
+    <main>
+      <section id="dashboard-summary" hx-get="/dashboard/summary" hx-trigger="load, every 10s" hx-swap="innerHTML">
+        {% include "partials/summary.html" %}
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading">
+          <h2>Attack Simulations</h2>
+          <span>Generate realistic local traffic for analytics validation</span>
+        </div>
+        <div class="simulation-grid">
+          <a class="simulation" href="/simulate/nikto">Nikto scan</a>
+          <a class="simulation" href="/simulate/dirbuster">Directory fuzzing</a>
+          <a class="simulation" href="/simulate/bruteforce">Brute force</a>
+          <a class="simulation" href="/reports/latest">JSON report</a>
+        </div>
+        <pre id="action-output" class="output">Ready.</pre>
+      </section>
+    </main>
+  </body>
+</html>
