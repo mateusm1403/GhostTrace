@@ -1,4 +1,4 @@
-<img width="1544" height="759" alt="image" src="https://github.com/user-attachments/assets/69e3aae6-030d-41d2-98d2-fb9e8b38525a" /># GhostTrace
+# GhostTrace
 
 GhostTrace é uma plataforma local de Deception Technology desenvolvida para geração de HoneyTokens, captura de tentativas de acesso suspeitas e análise comportamental de atividades potencialmente maliciosas.
 
@@ -24,8 +24,8 @@ O GhostTrace permite:
 
 # Dashboard
 
+<img width="1544" height="759" alt="image" src="https://github.com/user-attachments/assets/69e3aae6-030d-41d2-98d2-fb9e8b38525a" />
 <img width="1540" height="746" alt="image" src="https://github.com/user-attachments/assets/8dca8e8f-fb77-412f-95f1-6366eb44ce75" />
-<img width="1582" height="763" alt="image" src="https://github.com/user-attachments/assets/41741740-e751-4bb4-8a33-52b14bf237b4" 
 <img width="1544" height="759" alt="image" src="https://github.com/user-attachments/assets/3e470d40-1aec-4fcb-a138-bcd294740ba1" />
 
 
